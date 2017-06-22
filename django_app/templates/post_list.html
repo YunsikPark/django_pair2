@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for post in posts %}
+    <ul>
+        <li><img src="{{ post.photo.url }}" alt=""></li>
+        <li>{{ post.comment }}</li>
+    </ul>
+    <a href="">modify</a>
+    <form action="{% url 'post_delete' post_pk=post.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit">delete</button>
+    </form>
+{% endfor %}
+{% endblock %}
